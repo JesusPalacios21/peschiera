@@ -1,6 +1,6 @@
 (function () {
   var CFG = {
-    wa: "51977964460",
+    wa: "51930861460",
     hero: "img/xdddddddddddd.jpg",
     photos: [
       { p: "img/parque3.jpg", t: "Nuestra promoción", d: "Inicial 5 años · I.E.I. N° 243 Esperanza Carrillo de Peschiera" },
