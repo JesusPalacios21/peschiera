@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Pequeños Gigantes con Mentes Brillantes · Invitación</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <canvas id="fx"></canvas>
+    <div id="gate">
+      <i id="fk"></i>
+      <div class="st on" id="s0">
+        <div class="logo">
+          <img
+            src="img/peschieralogo.png"
+            alt="Logo de la institución"
+            onerror="this.remove()"
+          />
+        </div>
+        <p
+          class="ty"
+          id="ty"
+          aria-label="Pequeños Gigantes con Mentes Brillantes"
+        ></p>
+      </div>
+      <div class="st" id="s1">
+        <i id="tb"></i><i class="stars"></i><i class="rays"></i
+        ><i class="leak"></i><i class="vg"></i><i class="grain"></i>
+        <div id="pl"><img id="pli" alt="" /></div>
+        <i class="bar t"></i><i class="bar b"></i><i class="fh"></i
+        ><i id="tp"></i>
+        <p id="tt"></p>
+        <p id="ts"></p>
+      </div>
+      <div class="st" id="s2">
+        <p class="cap">Tienes una invitación</p>
+        <div class="env" id="env">
+          <i class="eb"></i>
+          <div class="ec">
+            <p class="cap">Estás invitado</p>
+            <p class="scr">Pequeños Gigantes</p>
+          </div>
+          <i class="ef"></i><i class="fl"></i>
+          <button class="seal" id="seal" aria-label="Romper el sello">
+            PG
+          </button>
+        </div>
+        <p class="cap hs">Toca el sello para abrir</p>
+      </div>
+    </div>
+    <button id="mus" aria-label="Activar o silenciar música">🔊</button>
+
+    <header id="hero">
+      <div class="ph">
+        <div class="bg" id="hbg"></div>
+        <div class="hc">
+          <p class="cap" style="--i: 0">Nos graduamos</p>
+          <p class="scr" style="--i: 1">
+            Pequeños Gigantes con Mentes Brillantes
+          </p>
+          <p class="cap d" style="--i: 2">20 · Diciembre · 2026</p>
+          <p class="cap d" style="--i: 3; margin-top: 8px; opacity: 0.85">
+            I.E.I. N° 243 Esperanza Carrillo de Peschiera · Inicial 5 años
+          </p>
+        </div>
+      </div>
+      <div class="pn">
+        <p>Cinco años de sueños, juegos y ternura nos trajeron hasta aquí.</p>
+        <span class="hrt">♥</span>
+      </div>
+    </header>
+
+    <section class="band white">
+      <div class="in">
+        <h2 class="scr rv">Nos complace invitarte</h2>
+        <div class="ln rv"></div>
+        <p class="txt rv">
+          Con inmensa alegría culminamos esta hermosa etapa de nuestras vidas.
+        </p>
+        <p class="txt rv">
+          Nos honra invitarte a compartir con nosotros la ceremonia y la fiesta
+          de nuestra promoción.
+        </p>
+        <p class="txt rv" style="color: var(--blue)">
+          Tu presencia hará este recuerdo aún más especial.
+        </p>
+      </div>
+    </section>
+
+    <section class="band blue">
+      <div class="in">
+        <h2 class="scr rv">Falta muy poco</h2>
+        <div class="ln rv"></div>
+        <div class="cd rv">
+          <div><b id="d">0</b><span>Días</span></div>
+          <div><b id="h">0</b><span>Horas</span></div>
+          <div><b id="m">0</b><span>Min</span></div>
+          <div><b id="s">0</b><span>Seg</span></div>
+        </div>
+        <div class="row rv" style="margin-top: 34px">
+          <a
+            class="btn"
+            target="_blank"
+            rel="noopener"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Promoci%C3%B3n+Peque%C3%B1os+Gigantes+con+Mentes+Brillantes+-+I.E.I.+N%C2%B0+243+Esperanza+Carrillo+de+Peschiera&dates=20261221T010000Z/20261221T050000Z&location=Sal%C3%B3n+y+Recepciones+El+Dorado,+Calle+Rosario,+Chincha"
+            >Guardar en calendario</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="band mist">
+      <div class="in">
+        <h2 class="scr rv">Nuestros graduados</h2>
+        <div class="ln rv"></div>
+        <p class="hint rv">Toca la foto para verla en grande</p>
+        <div class="gal rv">
+          <div
+            class="gstage"
+            id="gstage"
+            tabindex="0"
+            aria-label="Fotos grupales de la promoción"
+          ></div>
+          <button class="gb gp" id="pv" aria-label="Foto anterior">‹</button>
+          <button class="gb gn" id="nx" aria-label="Foto siguiente">›</button>
+        </div>
+        <div class="thumbs rv" id="thumbs"></div>
+        <div class="pb"><i id="pbi"></i></div>
+        <p class="cnt" id="cnt"></p>
+      </div>
+    </section>
+    <div id="lb" role="dialog" aria-label="Foto ampliada">
+      <img id="lbi" alt="" /><button aria-label="Cerrar">×</button>
+    </div>
+
+    <!-- Reemplaza la sección "Programa" -->
+    <section class="band blue" id="mentes">
+      <div class="in">
+        <h2 class="scr rv">Mentes brillantes</h2>
+        <div class="ln rv"></div>
+        <p class="txt rv">
+          Enciende cada idea y descubre lo que nos hizo gigantes.
+        </p>
+        <div class="bulbs rv" id="bulbs"></div>
+        <div class="bmsg rv" id="bmsg" aria-live="polite">
+          Toca una bombilla ✨
+        </div>
+        <p class="bcnt rv" id="bcnt">0 / 5 ideas encendidas</p>
+
+        <div class="ck rv">
+          <p class="cap">Tu lista para la gran noche</p>
+          <button type="button">Confirmar mi asistencia</button>
+          <button type="button">Elegir mi vestimenta elegante</button>
+          <button type="button">Guardar la fecha en mi calendario</button>
+          <button type="button">Escribir mi dedicatoria en el libro</button>
+          <p class="bcnt" id="ckm">0 de 4 listos</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band white">
+      <div class="in">
+        <h2 class="scr rv">¿Dónde será?</h2>
+        <div class="ln rv"></div>
+        <div class="card rv" style="padding-top: clamp(50px, 12vw, 90px)">
+          <p class="scr">Salón y Recepciones El Dorado</p>
+          <p class="cap" style="margin: 8px 0">Calle Rosario · Chincha</p>
+          <p style="margin-bottom: 18px">
+            Domingo 20 de diciembre · 6:00 p. m.
+          </p>
+          <a
+            class="btn rb"
+            target="_blank"
+            rel="noopener"
+            href="https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+y+Recepciones+El+Dorado+Calle+Rosario+Chincha+Peru"
+            >Cómo llegar</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="band mist">
+      <div class="in">
+        <h2 class="scr rv">Detalles</h2>
+        <div class="ln rv"></div>
+        <div class="g3">
+          <div class="rv">
+            <i>🤵</i>
+            <h3>Caballeros</h3>
+            <p>
+              Terno elegante, camisa, pantalón de vestir y zapatos formales.
+            </p>
+          </div>
+          <div class="rv">
+            <i>👗</i>
+            <h3>Damas</h3>
+            <p>Vestido o conjunto elegante, con calzado cómodo y formal.</p>
+          </div>
+          <div class="rv">
+            <i>⏰</i>
+            <h3>Puntualidad</h3>
+            <p>Llega unos minutos antes de las 6:00 p. m.</p>
+          </div>
+          <div class="rv">
+            <i>📸</i>
+            <h3>Fotos</h3>
+            <p>Habrá un espacio para el recuerdo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band white" id="libro">
+      <div class="in">
+        <h2 class="scr rv">Libro de mensajes</h2>
+        <div class="ln rv"></div>
+        <p class="txt rv">
+          Deja una dedicatoria para nuestros pequeños gigantes.
+        </p>
+        <div class="book rv">
+          <input
+            id="bn"
+            placeholder="Tu nombre"
+            maxlength="40"
+            autocomplete="name"
+          />
+          <textarea
+            id="bt"
+            placeholder="Escribe tu mensaje…"
+            maxlength="180"
+            rows="3"
+          ></textarea>
+          <div class="row">
+            <button class="btn rb" id="bs" type="button">
+              Escribir en el libro
+            </button>
+            <button class="btn ol" id="bw" type="button">
+              Enviar por WhatsApp
+            </button>
+          </div>
+          <p class="nt">
+            Los mensajes del libro se guardan en tu dispositivo; envíalos por
+            WhatsApp para que lleguen a la familia.
+          </p>
+        </div>
+        <div class="bl" id="bl"></div>
+      </div>
+    </section>
+
+    <section class="band blue" id="rsvp">
+      <div class="in">
+        <h2 class="scr rv">Confirma tu asistencia</h2>
+        <div class="ln rv"></div>
+        <form class="rv" onsubmit="return false;">
+          <label
+            >Tu nombre<input
+              id="nm"
+              placeholder="Nombre y apellido"
+              autocomplete="name"
+          /></label>
+          <label
+            >Personas que asistirán<select id="ng">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></label
+          >
+          <div class="row">
+            <button class="btn" id="yes">Sí, asistiré</button
+            ><button class="btn ol" id="no">No podré ir</button>
+          </div>
+          <div class="row" style="margin-top: 0">
+            <button class="btn ol" id="sh" type="button">
+              Compartir invitación
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer
+      class="band blue"
+      style="padding-bottom: 100px; background: #0c4a85"
+    >
+      <div class="in rv">
+        <p class="scr">Gracias por ser parte de nuestra historia</p>
+        <p class="cap" style="margin-top: 14px">
+          Pequeños Gigantes con Mentes Brillantes · 2026
+        </p>
+        <p style="opacity: 0.7">
+          I.E.I. N° 243 Esperanza Carrillo de Peschiera · Inicial 5 años
+        </p>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>
