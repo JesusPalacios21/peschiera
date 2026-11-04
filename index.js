@@ -7,54 +7,20 @@
       { p: "img/parque1.jpg", t: "Pequeños gigantes", d: "Amigos para siempre" },
       { p: "img/parque2.jpg", t: "Mentes brillantes", d: "Pequeños Gigantes con Mentes Brillantes 2026" },
       { p: "img/togapeschiera.jpg", t: "Recuerdos inolvidables", d: "Momentos especiales que viviremos por siempre" },
-      { p: "img/colegio.jpg", t: "Aprendiendo y creciendo", d: "Cada día una nueva aventura llena de alegría" },
+      { p: "img/colegio.avif", t: "Aprendiendo y creciendo", d: "Cada día una nueva aventura llena de alegría" },
     ],
   };
 
   var MUSIC_SRC = "music/photograph.mp3";
   var MUSIC_VOL = 1.0; // volumen de 0 a 1
 
-  var T = new Date("2026-12-20T20:00:00-05:00").getTime(),
+  var T = new Date("2026-12-20T18:00:00-05:00").getTime(),
     $ = function (i) {
       return document.getElementById(i);
     },
     MS = 5000;
 
-  if (CFG.hero) {
-    $("hbg").style.backgroundImage = "url('" + CFG.hero + "')";
-  } else {
-    var g = "",
-      r,
-      k,
-      x,
-      y,
-      hh = document.querySelector(".ph");
-    for (r = 0; r < 3; r++)
-      for (k = 0; k < 11; k++) {
-        x = k * 58 + (r % 2) * 29 + 10;
-        y = 240 + r * 72;
-        g +=
-          '<g fill="#0c4a85" opacity="' +
-          (0.3 + r * 0.22) +
-          '"><circle cx="' +
-          x +
-          '" cy="' +
-          (y - 12) +
-          '" r="' +
-          (12 + r * 2) +
-          '"/><path d="M' +
-          (x - 24) +
-          " " +
-          (y + 80) +
-          'v-46q0-20 24-20t24 20v46z"/></g>';
-      }
-    hh.insertAdjacentHTML(
-      "afterbegin",
-      '<svg class="grp" viewBox="0 0 640 460" preserveAspectRatio="xMidYMax slice" aria-hidden="true">' +
-        g +
-        '</svg><span class="tag">📷 AQUÍ IRÁ LA FOTO GRUPAL</span>',
-    );
-  }
+  $("hbg").style.backgroundImage = "url('" + CFG.hero + "')";
 
   /* reveal */
   var io = new IntersectionObserver(
@@ -116,15 +82,13 @@
     var d = document.createElement("div");
     d.className = "gs";
     d.innerHTML =
-      (s.p
-        ? '<div class="bgb" style="background-image:url(\'' + s.p + '\')"></div><img alt="' + E(s.t) + '" src="' + s.p + '" onerror="this.remove()">'
-        : '<div class="ph2">📷</div>') +
+      '<img class="bgb" alt="" aria-hidden="true" loading="lazy" decoding="async" src="' + s.p + '" onerror="this.remove()"><img alt="' + E(s.t) + '" loading="lazy" decoding="async" src="' + s.p + '" onerror="this.remove()">' +
       '<div class="gc"><p class="scr">' + E(s.t) + '</p><p class="cap">' + E(s.d || "Pequeños Gigantes con Mentes Brillantes") + "</p></div>";
     gs.appendChild(d);
     var b = document.createElement("button");
     b.className = "th";
     b.setAttribute("aria-label", "Ver foto " + (k + 1));
-    b.innerHTML = s.p ? '<img alt="" src="' + s.p + '" onerror="this.remove()">' : "";
+    b.innerHTML = '<img alt="" loading="lazy" decoding="async" src="' + s.p + '" onerror="this.remove()">';
     b.onclick = function () {
       go(k);
       auto();
@@ -191,7 +155,7 @@
   });
   /* ampliar foto */
   gs.addEventListener("click", function () {
-    if (Date.now() - lastSw < 400 || !P[i].p) return;
+    if (Date.now() - lastSw < 400) return;
     $("lbi").src = P[i].p;
     lb.classList.add("on");
     clearInterval(tm);
@@ -206,7 +170,10 @@
   });
   if (sl.length) {
     go(0, true);
-    auto();
+    // el carrusel solo avanza cuando se ve en pantalla
+    new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting) auto(); else clearInterval(tm);
+    }, { threshold: 0.2 }).observe(gs);
   }
 
   /* ====== MENTES BRILLANTES (interactivo) ====== */
@@ -295,7 +262,7 @@
     on = false;
   audio.loop = true; // se repite sola
   audio.volume = MUSIC_VOL;
-  audio.preload = "auto";
+  audio.preload = "none";
 
   function setM(v) {
     on = v;
@@ -327,6 +294,7 @@
     $("gate").classList.add("open");
     document.body.classList.add("go");
     burst();
+    setTimeout(function () { $("gate").remove(); }, 1500);
   }
   $("seal").onclick = function () {
     this.classList.add("br");
@@ -335,7 +303,7 @@
     setTimeout(reveal, 3300);
   };
   // la música intenta sonar sola; si el celular la bloquea, empieza con el primer toque
-  setM(true);
+  addEventListener("load", function () { setM(true); });
   ["pointerdown", "keydown"].forEach(function (ev) {
     addEventListener(ev, function () {
       if (on && audio.paused && !document.hidden) audio.play().catch(function () {});
@@ -382,6 +350,8 @@
       c.drawImage(plogo, PW - 70 - lw, PH - 90 - lh, lw, lh);
     }
   }
+  var pq = 0;
+  function preq() { if (!pq) { pq = 1; requestAnimationFrame(function () { pq = 0; pdraw(); }); } }
   plogo.onload = pdraw;
   plogo.src = "img/peschieralogo.png";
   pdraw();
@@ -395,21 +365,25 @@
     if (!f) return;
     var im = new Image();
     im.onload = function () {
-      pimg = im; pz = 1; px = 0; py = 0; $("pz").value = 1;
+      var k = Math.min(1, 2000 / Math.max(im.width, im.height)), cc = document.createElement("canvas");
+      cc.width = Math.round(im.width * k); cc.height = Math.round(im.height * k);
+      cc.getContext("2d").drawImage(im, 0, 0, cc.width, cc.height);
+      URL.revokeObjectURL(im.src);
+      pimg = cc; pz = 1; px = 0; py = 0; $("pz").value = 1;
       $("pz").disabled = $("pdl").disabled = $("psh").disabled = false;
       $("pfh").hidden = false; cvm.classList.add("has");
       pdraw();
     };
     im.src = URL.createObjectURL(f);
   };
-  $("pz").oninput = function () { pz = +this.value; pdraw(); };
+  $("pz").oninput = function () { pz = +this.value; preq(); };
   var pd = null;
   cvm.addEventListener("pointerdown", function (e) { if (pimg) { pd = [e.clientX, e.clientY]; cvm.setPointerCapture(e.pointerId); } });
   cvm.addEventListener("pointermove", function (e) {
     if (!pd) return;
     var k = PW / cvm.clientWidth;
     px += (e.clientX - pd[0]) * k; py += (e.clientY - pd[1]) * k;
-    pd = [e.clientX, e.clientY]; pdraw();
+    pd = [e.clientX, e.clientY]; preq();
   });
   ["pointerup", "pointercancel"].forEach(function (ev) { cvm.addEventListener(ev, function () { pd = null; }); });
   function pget(cb) { cvm.toBlob(cb, "image/png"); }
@@ -427,37 +401,12 @@
     });
   };
 
-  /* libro de mensajes */
-  var KEY = "lm_pgmb";
-  function ld() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
-  }
-  function rend() {
-    var a = ld();
-    $("bl").innerHTML = a.length
-      ? a.map(function (m) { return '<div class="note"><p>“' + E(m.t) + '”</p><b>— ' + E(m.n) + "</b></div>"; }).join("")
-      : '<p class="emp">Aún no hay mensajes. ¡Sé el primero en escribir!</p>';
-  }
-  function gd() {
-    var n = $("bn").value.trim(), t = $("bt").value.trim();
-    if (!n || !t) { (n ? $("bt") : $("bn")).focus(); return null; }
-    return { n: n, t: t };
-  }
-  $("bs").onclick = function () {
-    var d = gd();
-    if (!d) return;
-    var a = ld();
-    a.unshift(d);
-    try { localStorage.setItem(KEY, JSON.stringify(a.slice(0, 50))); } catch (e) {}
-    $("bt").value = "";
-    rend();
-  };
+  /* dedicatoria por WhatsApp */
   $("bw").onclick = function () {
-    var d = gd();
-    if (!d) return;
-    window.open("https://wa.me/" + CFG.wa + "?text=" + encodeURIComponent("📖 Dedicatoria para los Pequeños Gigantes, de parte de " + d.n + ":\n“" + d.t + "”"), "_blank");
+    var n = $("bn").value.trim(), t = $("bt").value.trim();
+    if (!n || !t) { (n ? $("bt") : $("bn")).focus(); return; }
+    window.open("https://wa.me/" + CFG.wa + "?text=" + encodeURIComponent("📖 Dedicatoria para los Pequeños Gigantes, de parte de " + n + ":\n“" + t + "”"), "_blank");
   };
-  rend();
 
   // pausa la música al salir de la pestaña y la reanuda al volver
   document.addEventListener("visibilitychange", function () {
@@ -473,7 +422,7 @@
     B = [],
     W,
     H,
-    dpr = Math.min(devicePixelRatio || 1, 2),
+    dpr = 1,
     cl = ["#fff", "#d9f1ff", "#8ec5ff", "#f6c026", "#ffe58a"];
   function rs() {
     W = innerWidth;
@@ -493,7 +442,7 @@
       w: Math.random() * 6,
     };
   }
-  for (var q = 0; q < Math.min(60, W / 12); q++) F.push(mk());
+  for (var q = 0; q < Math.min(40, W / 16); q++) F.push(mk());
   function burst() {
     for (var q = 0; q < 130; q++) {
       var a = Math.random() * Math.PI * 2,
@@ -544,7 +493,7 @@
     var n = Date.now();
     if (n - lt < 45) return;
     lt = n;
-    B.push({ x: e.clientX, y: e.clientY, vx: (Math.random() - 0.5) * 1.5, vy: Math.random() * 1.5, c: "#f6c026", l: 0.7, z: Math.random() * 4 + 2 });
+    if (B.length < 250) B.push({ x: e.clientX, y: e.clientY, vx: (Math.random() - 0.5) * 1.5, vy: Math.random() * 1.5, c: "#f6c026", l: 0.7, z: Math.random() * 4 + 2 });
   });
   dr();
 })();

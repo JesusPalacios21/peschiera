@@ -7,6 +7,8 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>Pequeños Gigantes con Mentes Brillantes · Invitación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap"
       rel="stylesheet"
@@ -85,7 +87,7 @@
             class="btn"
             target="_blank"
             rel="noopener"
-            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Promoci%C3%B3n+Peque%C3%B1os+Gigantes+con+Mentes+Brillantes+-+I.E.I.+N%C2%B0+243+Esperanza+Carrillo+de+Peschiera&dates=20261221T010000Z/20261221T050000Z&location=Sal%C3%B3n+y+Recepciones+El+Dorado,+Calle+Rosario,+Chincha"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Promoci%C3%B3n+Peque%C3%B1os+Gigantes+con+Mentes+Brillantes+-+I.E.I.+N%C2%B0+243+Esperanza+Carrillo+de+Peschiera&dates=20261220T230000Z/20261221T030000Z&location=Sal%C3%B3n+y+Recepciones+El+Dorado,+Calle+Rosario,+Chincha"
             >Guardar en calendario</a
           >
         </div>
@@ -116,7 +118,6 @@
       <img id="lbi" alt="" /><button aria-label="Cerrar">×</button>
     </div>
 
-    <!-- Reemplaza la sección "Programa" -->
     <section class="band blue" id="mentes">
       <div class="in">
         <h2 class="scr rv">Mentes brillantes</h2>
@@ -130,11 +131,19 @@
         </div>
         <p class="bcnt rv" id="bcnt">0 / 5 ideas encendidas</p>
 
+        
+      </div>
+    </section>
+
+    <section class="band mist" id="marco">
+      <div class="in">
+        <h2 class="scr rv">Llévate el recuerdo</h2>
+        <div class="ln rv"></div>
+        <p class="txt rv">Ponte el marco de la promoción y compártelo.</p>
         <div class="pfw rv">
-          <p class="cap">Tu foto con el marco</p>
           <canvas id="pf" width="1080" height="1350" aria-label="Vista previa de tu foto con el marco"></canvas>
           <input id="pfile" type="file" accept="image/*" hidden />
-          <button class="btn" id="ppick" type="button">📷 Elegir o tomar foto</button>
+          <button class="btn rb" id="ppick" type="button">📷 Elegir o tomar foto</button>
           <p class="pfh" id="pfh" hidden>Arrastra la foto y usa el control para encuadrarla</p>
           <input id="pz" class="pfz" type="range" min="1" max="3" step="0.01" value="1" aria-label="Acercar foto" disabled />
           <div class="row">
@@ -144,6 +153,7 @@
         </div>
       </div>
     </section>
+
 
     <section class="band white">
       <div class="in">
@@ -201,17 +211,14 @@
       <div class="in">
         <h2 class="scr rv">Libro de mensajes</h2>
         <div class="ln rv"></div>
-        <p class="txt rv">Deja una dedicatoria para nuestros pequeños gigantes.</p>
+        <p class="txt rv">Escribe una dedicatoria para nuestros pequeños gigantes; llegará directo a la familia por WhatsApp.</p>
         <div class="book rv">
           <input id="bn" placeholder="Tu nombre" maxlength="40" autocomplete="name" />
           <textarea id="bt" placeholder="Escribe tu mensaje…" maxlength="180" rows="3"></textarea>
           <div class="row">
-            <button class="btn rb" id="bs" type="button">Escribir en el libro</button>
-            <button class="btn ol" id="bw" type="button">Enviar por WhatsApp</button>
+            <button class="btn rb" id="bw" type="button">Enviar dedicatoria</button>
           </div>
-          <p class="nt">Los mensajes del libro se guardan en tu dispositivo; envíalos por WhatsApp para que lleguen a la familia.</p>
         </div>
-        <div class="bl" id="bl"></div>
       </div>
     </section>
 
@@ -262,6 +269,6 @@
         </p>
       </div>
     </footer>
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </body>
 </html>
