@@ -3,14 +3,16 @@
     wa: "51977964460",
     hero: "img/xdddddddddddd.jpg",
     photos: [
-      { p: "img/parque3.jpeg", t: "Nuestra promoción", d: "Inicial 5 años · I.E.I. N° 243 Esperanza Carrillo de Peschiera" },
-      { p: "img/parque1.jpeg", t: "Pequeños gigantes", d: "Amigos para siempre" },
-      { p: "img/parque2.jpeg", t: "Mentes brillantes", d: "Pequeños Gigantes con Mentes Brillantes 2026" },
+      { p: "img/parque3.jpg", t: "Nuestra promoción", d: "Inicial 5 años · I.E.I. N° 243 Esperanza Carrillo de Peschiera" },
+      { p: "img/parque1.jpg", t: "Pequeños gigantes", d: "Amigos para siempre" },
+      { p: "img/parque2.jpg", t: "Mentes brillantes", d: "Pequeños Gigantes con Mentes Brillantes 2026" },
+      { p: "img/togapeschiera.jpg", t: "Recuerdos inolvidables", d: "Momentos especiales que viviremos por siempre" },
+      { p: "img/colegio.jpg", t: "Aprendiendo y creciendo", d: "Cada día una nueva aventura llena de alegría" },
     ],
   };
 
-  var MUSIC_SRC = "music/Ed Sheeran - Photograph (Official Lyric Video).mp3";
-  var MUSIC_VOL = 0.8; 
+  var MUSIC_SRC = "music/photograph.mp3";
+  var MUSIC_VOL = 1.0; // volumen de 0 a 1
 
   var T = new Date("2026-12-20T20:00:00-05:00").getTime(),
     $ = function (i) {
@@ -308,78 +310,18 @@
   $("mus").onclick = function () {
     setM(!on);
   };
-  /* ====== INTRO: logo → máquina de escribir → parpadeo → tráiler → sobre ====== */
-  var TXT = "PEQUEÑOS GIGANTES CON MENTES BRILLANTES",
-    TS = [
-      ["Hace cinco años comenzó nuestra aventura…", 3200, CFG.hero || CFG.photos[0].p, "pa"],
-      ["Entre juegos, risas y abrazos", 3200, CFG.photos[1].p, "pb"],
-      ["aprendimos a soñar y a brillar", 3200, CFG.photos[2].p, "pc"],
-      ["y hoy somos gigantes", 2600, CFG.photos[0].p, "pd"],
-      ["20 · Diciembre · 2026", 3000, "", "", "Pequeños Gigantes con Mentes Brillantes"],
-    ],
-    tk = [];
-  function at(f, ms) { tk.push(setTimeout(f, ms)); }
+  /* ====== INTRO: logo → máquina de escribir → carta con sello ====== */
+  var TXT = "PEQUEÑOS GIGANTES CON MENTES BRILLANTES";
   function stage(n) {
-    ["s0", "s1", "s2"].forEach(function (id, k) { $(id).classList.toggle("on", k === n); });
+    ["s0", "s2"].forEach(function (id) { $(id).classList.toggle("on", id === "s" + n); });
   }
-  function envelope() { tk.forEach(clearTimeout); stage(2); }
   function typeIt(done) {
     var k = 0;
     (function nx() {
       $("ty").textContent = TXT.slice(0, ++k);
       if (k < TXT.length) setTimeout(nx, TXT[k - 1] === " " ? 150 : 70 + Math.random() * 60);
-      else { $("ty").classList.add("fin"); setTimeout(done, 2000); }
+      else { $("ty").classList.add("fin"); setTimeout(done, 1500); }
     })();
-  }
-  function blink(done) {
-    var f = $("fk"), k = 0,
-      seq = [[1, 900], [0, 900], [1, 700], [0, 700], [1, 60], [0, 60], [1, 60], [0, 60], [1, 60], [0, 60], [1, 60]];
-    (function nx() {
-      if (k >= seq.length) return done();
-      var s = seq[k++], slow = s[1] > 100;
-      f.style.transitionDuration = (slow ? s[1] : 30) + "ms";
-      f.style.opacity = s[0];
-      setTimeout(nx, s[1] + (slow ? 150 : 0));
-    })();
-  }
-  function trailer() {
-    var g = $("gate"), s = $("s1"), t = 400, tot = 0, tb = $("tb");
-    TS.forEach(function (l) { tot += l[1]; });
-    g.classList.add("cut");
-    stage(1);
-    $("fk").style.transitionDuration = "150ms";
-    $("fk").style.opacity = 0;
-    setTimeout(function () { g.classList.remove("cut"); }, 200);
-    $("tp").style.transition = "width " + tot + "ms linear";
-    setTimeout(function () { $("tp").style.width = "100%"; }, 50);
-    TS.forEach(function (l) {
-      at(function () {
-        var pl = $("pl"), tt = $("tt"), ts = $("ts");
-        ts.className = ""; pl.className = ""; tt.className = "";
-        void ts.offsetWidth;
-        ts.className = "in" + (l[4] ? " dt" : "");
-        ts.style.animationDuration = l[1] + "ms";
-        ts.textContent = l[0];
-        s.classList.remove("flsh");
-        void s.offsetWidth;
-        s.classList.add("flsh");
-        tb.classList.remove("on");
-        if (l[2]) {
-          $("pli").src = l[2];
-          pl.className = l[3];
-          pl.style.animationDuration = l[1] + "ms";
-          at(function () { tb.style.backgroundImage = "url('" + l[2] + "')"; tb.classList.add("on"); }, 350);
-        }
-        if (l[4]) {
-          tt.className = "a ti";
-          tt.style.animationDuration = l[1] + "ms";
-          tt.textContent = l[4];
-          s.classList.add("boom");
-        }
-      }, t);
-      t += l[1];
-    });
-    at(envelope, t);
   }
   function reveal() {
     $("gate").classList.add("open");
@@ -392,12 +334,6 @@
     setTimeout(function () { $("env").classList.add("open"); }, 700);
     setTimeout(reveal, 3300);
   };
-  for (var pi = 0; pi < 30; pi++) {
-    var pe = document.createElement("i"), ps = 3 + Math.random() * 5;
-    pe.className = "pt";
-    pe.style.cssText = "left:" + Math.random() * 100 + "%;width:" + ps + "px;height:" + ps + "px;animation-duration:" + (6 + Math.random() * 8) + "s;animation-delay:-" + Math.random() * 10 + "s";
-    $("s1").appendChild(pe);
-  }
   // la música intenta sonar sola; si el celular la bloquea, empieza con el primer toque
   setM(true);
   ["pointerdown", "keydown"].forEach(function (ev) {
@@ -405,18 +341,91 @@
       if (on && audio.paused && !document.hidden) audio.play().catch(function () {});
     });
   });
-  setTimeout(function () { typeIt(function () { blink(trailer); }); }, 2600);
+  setTimeout(function () { typeIt(function () { stage(2); }); }, 2600);
 
-  /* lista para la gran noche */
-  var ck = document.querySelectorAll(".ck button");
-  [].forEach.call(ck, function (b) {
-    b.onclick = function () {
-      b.classList.toggle("ok");
-      var n = document.querySelectorAll(".ck .ok").length;
-      $("ckm").textContent = n === ck.length ? "¡Todo listo! Nos vemos el 20 de diciembre 🌟" : n + " de " + ck.length + " listos";
-      if (n === ck.length) burst();
+  /* ====== MARCO DE FOTO ====== */
+  var PW = 1080, PH = 1350, cvm = $("pf"), cm = cvm.getContext("2d"),
+    pimg = null, pz = 1, px = 0, py = 0, plogo = new Image();
+  function rr(c, x, y, w, h, r) {
+    c.beginPath(); c.moveTo(x + r, y);
+    c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r);
+    c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath();
+  }
+  function pdraw() {
+    var c = cm, x = 70, y = 70, w = PW - 140, h = PH - 380, g = c.createLinearGradient(0, 0, 0, PH);
+    g.addColorStop(0, "#4aa8e8"); g.addColorStop(1, "#0c4a85");
+    c.fillStyle = g; c.fillRect(0, 0, PW, PH);
+    c.save(); rr(c, x, y, w, h, 36); c.clip();
+    if (pimg) {
+      var s = Math.max(w / pimg.width, h / pimg.height) * pz, iw = pimg.width * s, ih = pimg.height * s,
+        mx = (iw - w) / 2, my = (ih - h) / 2;
+      px = Math.max(-mx, Math.min(mx, px)); py = Math.max(-my, Math.min(my, py));
+      c.drawImage(pimg, x + (w - iw) / 2 + px, y + (h - ih) / 2 + py, iw, ih);
+    } else {
+      c.fillStyle = "rgba(255,255,255,.18)"; c.fillRect(x, y, w, h);
+      c.fillStyle = "#fff"; c.textAlign = "center"; c.font = "300 56px 'Cormorant Garamond',serif";
+      c.fillText("Tu foto aquí", PW / 2, y + h / 2);
+    }
+    c.restore();
+    c.lineWidth = 10; c.strokeStyle = "#f6c026"; rr(c, x, y, w, h, 36); c.stroke();
+    c.lineWidth = 4; c.strokeStyle = "#fff"; rr(c, 30, 30, PW - 60, PH - 60, 52); c.stroke();
+    c.textAlign = "center"; c.fillStyle = "#fff";
+    c.font = "86px 'Pinyon Script',cursive"; c.fillText("Pequeños Gigantes", PW / 2, PH - 215);
+    c.font = "62px 'Pinyon Script',cursive"; c.fillText("con Mentes Brillantes", PW / 2, PH - 150);
+    c.fillStyle = "#ffe58a"; c.font = "600 34px 'Cormorant Garamond',serif";
+    try { c.letterSpacing = "6px"; } catch (e) {}
+    c.fillText("20 · DICIEMBRE · 2026", PW / 2, PH - 85);
+    try { c.letterSpacing = "0px"; } catch (e) {}
+    if (plogo.complete && plogo.naturalWidth) {
+      var lh = 150, lw = lh * plogo.naturalWidth / plogo.naturalHeight;
+      if (lw > 150) { lw = 150; lh = lw * plogo.naturalHeight / plogo.naturalWidth; }
+      c.drawImage(plogo, PW - 70 - lw, PH - 90 - lh, lw, lh);
+    }
+  }
+  plogo.onload = pdraw;
+  plogo.src = "img/peschieralogo.png";
+  pdraw();
+  if (document.fonts) {
+    document.fonts.load('40px "Pinyon Script"').then(pdraw);
+    document.fonts.load('600 34px "Cormorant Garamond"').then(pdraw);
+  }
+  $("ppick").onclick = function () { $("pfile").click(); };
+  $("pfile").onchange = function () {
+    var f = this.files[0];
+    if (!f) return;
+    var im = new Image();
+    im.onload = function () {
+      pimg = im; pz = 1; px = 0; py = 0; $("pz").value = 1;
+      $("pz").disabled = $("pdl").disabled = $("psh").disabled = false;
+      $("pfh").hidden = false; cvm.classList.add("has");
+      pdraw();
     };
+    im.src = URL.createObjectURL(f);
+  };
+  $("pz").oninput = function () { pz = +this.value; pdraw(); };
+  var pd = null;
+  cvm.addEventListener("pointerdown", function (e) { if (pimg) { pd = [e.clientX, e.clientY]; cvm.setPointerCapture(e.pointerId); } });
+  cvm.addEventListener("pointermove", function (e) {
+    if (!pd) return;
+    var k = PW / cvm.clientWidth;
+    px += (e.clientX - pd[0]) * k; py += (e.clientY - pd[1]) * k;
+    pd = [e.clientX, e.clientY]; pdraw();
   });
+  ["pointerup", "pointercancel"].forEach(function (ev) { cvm.addEventListener(ev, function () { pd = null; }); });
+  function pget(cb) { cvm.toBlob(cb, "image/png"); }
+  function psave(b) {
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(b); a.download = "pequenos-gigantes.png"; a.click();
+  }
+  $("pdl").onclick = function () { pget(psave); };
+  $("psh").onclick = function () {
+    pget(function (b) {
+      var f = new File([b], "pequenos-gigantes.png", { type: "image/png" });
+      if (navigator.canShare && navigator.canShare({ files: [f] })) {
+        navigator.share({ files: [f], title: "Pequeños Gigantes con Mentes Brillantes" }).catch(function () {});
+      } else psave(b);
+    });
+  };
 
   /* libro de mensajes */
   var KEY = "lm_pgmb";

@@ -16,42 +16,19 @@
   <body>
     <canvas id="fx"></canvas>
     <div id="gate">
-      <i id="fk"></i>
       <div class="st on" id="s0">
         <div class="logo">
-          <img
-            src="img/peschieralogo.png"
-            alt="Logo de la institución"
-            onerror="this.remove()"
-          />
+          <img src="img/peschieralogo.png" alt="Logo de la institución" onerror="this.remove()" />
         </div>
-        <p
-          class="ty"
-          id="ty"
-          aria-label="Pequeños Gigantes con Mentes Brillantes"
-        ></p>
-      </div>
-      <div class="st" id="s1">
-        <i id="tb"></i><i class="stars"></i><i class="rays"></i
-        ><i class="leak"></i><i class="vg"></i><i class="grain"></i>
-        <div id="pl"><img id="pli" alt="" /></div>
-        <i class="bar t"></i><i class="bar b"></i><i class="fh"></i
-        ><i id="tp"></i>
-        <p id="tt"></p>
-        <p id="ts"></p>
+        <p class="ty" id="ty" aria-label="Pequeños Gigantes con Mentes Brillantes"></p>
       </div>
       <div class="st" id="s2">
         <p class="cap">Tienes una invitación</p>
         <div class="env" id="env">
           <i class="eb"></i>
-          <div class="ec">
-            <p class="cap">Estás invitado</p>
-            <p class="scr">Pequeños Gigantes</p>
-          </div>
+          <div class="ec"><p class="cap">Estás invitado</p><p class="scr">Pequeños Gigantes</p></div>
           <i class="ef"></i><i class="fl"></i>
-          <button class="seal" id="seal" aria-label="Romper el sello">
-            PG
-          </button>
+          <button class="seal" id="seal" aria-label="Romper el sello">PG</button>
         </div>
         <p class="cap hs">Toca el sello para abrir</p>
       </div>
@@ -63,9 +40,7 @@
         <div class="bg" id="hbg"></div>
         <div class="hc">
           <p class="cap" style="--i: 0">Nos graduamos</p>
-          <p class="scr" style="--i: 1">
-            Pequeños Gigantes con Mentes Brillantes
-          </p>
+          <p class="scr" style="--i: 1">Pequeños Gigantes con Mentes Brillantes</p>
           <p class="cap d" style="--i: 2">20 · Diciembre · 2026</p>
           <p class="cap d" style="--i: 3; margin-top: 8px; opacity: 0.85">
             I.E.I. N° 243 Esperanza Carrillo de Peschiera · Inicial 5 años
@@ -155,13 +130,17 @@
         </div>
         <p class="bcnt rv" id="bcnt">0 / 5 ideas encendidas</p>
 
-        <div class="ck rv">
-          <p class="cap">Tu lista para la gran noche</p>
-          <button type="button">Confirmar mi asistencia</button>
-          <button type="button">Elegir mi vestimenta elegante</button>
-          <button type="button">Guardar la fecha en mi calendario</button>
-          <button type="button">Escribir mi dedicatoria en el libro</button>
-          <p class="bcnt" id="ckm">0 de 4 listos</p>
+        <div class="pfw rv">
+          <p class="cap">Tu foto con el marco</p>
+          <canvas id="pf" width="1080" height="1350" aria-label="Vista previa de tu foto con el marco"></canvas>
+          <input id="pfile" type="file" accept="image/*" hidden />
+          <button class="btn" id="ppick" type="button">📷 Elegir o tomar foto</button>
+          <p class="pfh" id="pfh" hidden>Arrastra la foto y usa el control para encuadrarla</p>
+          <input id="pz" class="pfz" type="range" min="1" max="3" step="0.01" value="1" aria-label="Acercar foto" disabled />
+          <div class="row">
+            <button class="btn rb" id="pdl" type="button" disabled>Descargar</button>
+            <button class="btn ol" id="psh" type="button" disabled>Compartir</button>
+          </div>
         </div>
       </div>
     </section>
@@ -222,34 +201,15 @@
       <div class="in">
         <h2 class="scr rv">Libro de mensajes</h2>
         <div class="ln rv"></div>
-        <p class="txt rv">
-          Deja una dedicatoria para nuestros pequeños gigantes.
-        </p>
+        <p class="txt rv">Deja una dedicatoria para nuestros pequeños gigantes.</p>
         <div class="book rv">
-          <input
-            id="bn"
-            placeholder="Tu nombre"
-            maxlength="40"
-            autocomplete="name"
-          />
-          <textarea
-            id="bt"
-            placeholder="Escribe tu mensaje…"
-            maxlength="180"
-            rows="3"
-          ></textarea>
+          <input id="bn" placeholder="Tu nombre" maxlength="40" autocomplete="name" />
+          <textarea id="bt" placeholder="Escribe tu mensaje…" maxlength="180" rows="3"></textarea>
           <div class="row">
-            <button class="btn rb" id="bs" type="button">
-              Escribir en el libro
-            </button>
-            <button class="btn ol" id="bw" type="button">
-              Enviar por WhatsApp
-            </button>
+            <button class="btn rb" id="bs" type="button">Escribir en el libro</button>
+            <button class="btn ol" id="bw" type="button">Enviar por WhatsApp</button>
           </div>
-          <p class="nt">
-            Los mensajes del libro se guardan en tu dispositivo; envíalos por
-            WhatsApp para que lleguen a la familia.
-          </p>
+          <p class="nt">Los mensajes del libro se guardan en tu dispositivo; envíalos por WhatsApp para que lleguen a la familia.</p>
         </div>
         <div class="bl" id="bl"></div>
       </div>

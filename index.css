@@ -1785,3 +1785,56 @@ body {
 .card .scr {
   font-size: clamp(1.9rem, 7.5vw, 2.6rem);
 }
+
+/* transición suave: logo → carta */
+.st {
+  transition:
+    opacity 1.2s ease,
+    visibility 0s 1.2s;
+}
+.st.on {
+  transition: opacity 1.2s ease 0.4s;
+}
+
+/* ===== marco de foto ===== */
+.pfw {
+  max-width: 420px;
+  margin: 40px auto 0;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+.pfw .cap {
+  font-size: 0.8rem;
+  color: var(--gold-soft);
+}
+#pf {
+  width: min(100%, 340px);
+  height: auto;
+  aspect-ratio: 4/5;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+#pf.has {
+  touch-action: none;
+  cursor: grab;
+}
+.pfz {
+  width: min(100%, 300px);
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  accent-color: var(--gold);
+}
+.pfh {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+.pfw .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
