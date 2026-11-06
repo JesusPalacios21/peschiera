@@ -1136,3 +1136,74 @@ body {
 .gs.on .bgb {
   animation: none;
 }
+
+/* ===== Padrinos (versión con mucho cariño) ===== */
+.padrinos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.pad-card {
+  background: #fff;
+  border: 1.5px solid var(--gold);
+  border-radius: 28px;
+  padding: 36px 30px 40px;
+  min-width: 270px;
+  max-width: 360px;
+  flex: 1 1 270px;
+  box-shadow: 0 20px 45px rgba(12, 74, 133, 0.13);
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pad-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 55px rgba(12, 74, 133, 0.18);
+}
+
+.pad-icon {
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin-bottom: 14px;
+  line-height: 1;
+  opacity: 0.95;
+}
+
+.pad-card .cap {
+  color: var(--blue);
+  letter-spacing: 0.28em;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.pad-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.55rem, 5vw, 1.9rem);
+  color: var(--deep);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.pad-love {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #5a7a9a;
+  line-height: 1.4;
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .padrinos {
+    gap: 22px;
+  }
+  .pad-card {
+    padding: 32px 24px 36px;
+  }
+}

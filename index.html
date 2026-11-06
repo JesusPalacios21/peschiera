@@ -20,17 +20,30 @@
     <div id="gate">
       <div class="st on" id="s0">
         <div class="logo">
-          <img src="img/peschieralogo.png" alt="Logo de la institución" onerror="this.remove()" />
+          <img
+            src="img/peschieralogo.png"
+            alt="Logo de la institución"
+            onerror="this.remove()"
+          />
         </div>
-        <p class="ty" id="ty" aria-label="Pequeños Gigantes con Mentes Brillantes"></p>
+        <p
+          class="ty"
+          id="ty"
+          aria-label="Pequeños Gigantes con Mentes Brillantes"
+        ></p>
       </div>
       <div class="st" id="s2">
         <p class="cap">Tienes una invitación</p>
         <div class="env" id="env">
           <i class="eb"></i>
-          <div class="ec"><p class="cap">Estás invitado</p><p class="scr">Pequeños Gigantes</p></div>
+          <div class="ec">
+            <p class="cap">Estás invitado</p>
+            <p class="scr">Pequeños Gigantes</p>
+          </div>
           <i class="ef"></i><i class="fl"></i>
-          <button class="seal" id="seal" aria-label="Romper el sello">PG</button>
+          <button class="seal" id="seal" aria-label="Romper el sello">
+            PG
+          </button>
         </div>
         <p class="cap hs">Toca el sello para abrir</p>
       </div>
@@ -42,7 +55,9 @@
         <div class="bg" id="hbg"></div>
         <div class="hc">
           <p class="cap" style="--i: 0">Nos graduamos</p>
-          <p class="scr" style="--i: 1">Pequeños Gigantes con Mentes Brillantes</p>
+          <p class="scr" style="--i: 1">
+            Pequeños Gigantes con Mentes Brillantes
+          </p>
           <p class="cap d" style="--i: 2">20 · Diciembre · 2026</p>
           <p class="cap d" style="--i: 3; margin-top: 8px; opacity: 0.85">
             I.E.I. N° 243 Esperanza Carrillo de Peschiera · Inicial 5 años
@@ -69,6 +84,32 @@
         <p class="txt rv" style="color: var(--blue)">
           Tu presencia hará este recuerdo aún más especial.
         </p>
+      </div>
+    </section>
+
+    <section class="band mist">
+      <div class="in">
+        <h2 class="scr rv">Nuestros padrinos</h2>
+        <div class="ln rv"></div>
+        <p class="txt rv" style="margin-bottom: 40px; opacity: 0.85">
+          Personas muy especiales que nos acompañan con su amor
+        </p>
+
+        <div class="padrinos rv">
+          <div class="pad-card">
+            <div class="pad-icon">✦</div>
+            <p class="cap">Padrino</p>
+            <p class="pad-name">Alonso Navarro Cabanillas</p>
+            <p class="pad-love">Gracias por su guía, cariño y ejemplo</p>
+          </div>
+
+          <div class="pad-card">
+            <div class="pad-icon">✦</div>
+            <p class="cap">Madrina</p>
+            <p class="pad-name">Gilda Solari Bonifacio</p>
+            <p class="pad-love">Gracias por su amor, ternura y apoyo</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -130,8 +171,6 @@
           Toca una bombilla ✨
         </div>
         <p class="bcnt rv" id="bcnt">0 / 5 ideas encendidas</p>
-
-        
       </div>
     </section>
 
@@ -141,19 +180,41 @@
         <div class="ln rv"></div>
         <p class="txt rv">Ponte el marco de la promoción y compártelo.</p>
         <div class="pfw rv">
-          <canvas id="pf" width="1080" height="1350" aria-label="Vista previa de tu foto con el marco"></canvas>
+          <canvas
+            id="pf"
+            width="1080"
+            height="1350"
+            aria-label="Vista previa de tu foto con el marco"
+          ></canvas>
           <input id="pfile" type="file" accept="image/*" hidden />
-          <button class="btn rb" id="ppick" type="button">📷 Elegir o tomar foto</button>
-          <p class="pfh" id="pfh" hidden>Arrastra la foto y usa el control para encuadrarla</p>
-          <input id="pz" class="pfz" type="range" min="1" max="3" step="0.01" value="1" aria-label="Acercar foto" disabled />
+          <button class="btn rb" id="ppick" type="button">
+            📷 Elegir o tomar foto
+          </button>
+          <p class="pfh" id="pfh" hidden>
+            Arrastra la foto y usa el control para encuadrarla
+          </p>
+          <input
+            id="pz"
+            class="pfz"
+            type="range"
+            min="1"
+            max="3"
+            step="0.01"
+            value="1"
+            aria-label="Acercar foto"
+            disabled
+          />
           <div class="row">
-            <button class="btn rb" id="pdl" type="button" disabled>Descargar</button>
-            <button class="btn ol" id="psh" type="button" disabled>Compartir</button>
+            <button class="btn rb" id="pdl" type="button" disabled>
+              Descargar
+            </button>
+            <button class="btn ol" id="psh" type="button" disabled>
+              Compartir
+            </button>
           </div>
         </div>
       </div>
     </section>
-
 
     <section class="band white">
       <div class="in">
@@ -211,12 +272,27 @@
       <div class="in">
         <h2 class="scr rv">Libro de mensajes</h2>
         <div class="ln rv"></div>
-        <p class="txt rv">Escribe una dedicatoria para nuestros pequeños gigantes; llegará directo a la familia por WhatsApp.</p>
+        <p class="txt rv">
+          Escribe una dedicatoria para nuestros pequeños gigantes; llegará
+          directo a la familia por WhatsApp.
+        </p>
         <div class="book rv">
-          <input id="bn" placeholder="Tu nombre" maxlength="40" autocomplete="name" />
-          <textarea id="bt" placeholder="Escribe tu mensaje…" maxlength="180" rows="3"></textarea>
+          <input
+            id="bn"
+            placeholder="Tu nombre"
+            maxlength="40"
+            autocomplete="name"
+          />
+          <textarea
+            id="bt"
+            placeholder="Escribe tu mensaje…"
+            maxlength="180"
+            rows="3"
+          ></textarea>
           <div class="row">
-            <button class="btn rb" id="bw" type="button">Enviar dedicatoria</button>
+            <button class="btn rb" id="bw" type="button">
+              Enviar dedicatoria
+            </button>
           </div>
         </div>
       </div>
